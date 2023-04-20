@@ -1,5 +1,7 @@
 const GLOBALB = 10;
 
+// differences when use let and var to define a variable
+// in different scopes
 function function1() {
   var x = 2;
   if (true) {
@@ -18,7 +20,18 @@ function function2() {
   console.log(x);
 }
 
-function functionConst() {
+function functionConstUndefined() {
+  const lolcab = '';
+  let change; // undefined
+  let i = 0;
+  while (i <= 10) {
+    change = change + 1;
+    i++; // i = i + 1;
+  }
+  console.log(change); // will print nan (not a number cause change has not a initial value)
+}
+
+function functionConstCorrect() {
   const lolcab = '';
   let change; // undefined
   let i = 0;
@@ -33,28 +46,32 @@ function functionConst() {
 function functionNullUndefined() {
   const nullValue = null;
   let undefinedValue; // const undefinedValue = undefined;
-  console.log(typeof nullValue);
-  console.log(typeof undefinedValue);
+  console.log(typeof nullValue); // will print object
+  console.log(typeof undefinedValue); // will print undefined
 }
 
 // DIFFERENCE IN CLASS AND SHORTHAND
-
+// If you use the String Class and you instantiate the string object
+// with its constructor
+// string are always treat as array
 const stringObject = new String('hello'); // ['h', 'e', 'l', 'l', 'o']
-console.log(stringObject.toString());
+console.log('string - print without toString', stringObject);
+console.log('string - print with toString', stringObject.toString());
 const stringConstant = 'hello'; // ['h', 'e', 'l', 'l', 'o']
-console.log(stringConstant);
+console.log('string - print when shorthand', stringConstant);
 
 // DATE
 
 const dateExample = new Date();
-console.log(dateExample.getTimezoneOffset());
-console.log(dateExample.toString());
-console.log(dateExample.toISOString());
-console.log(dateExample.toLocaleDateString());
-console.log(dateExample.toUTCString());
+console.log('date - timezone offset', dateExample.getTimezoneOffset());
+console.log('date - toString', dateExample.toString());
+console.log('date - to iso string', dateExample.toISOString());
+console.log('date - locale date string', dateExample.toLocaleDateString());
+console.log('date - utc string', dateExample.toUTCString());
 
 // ARRAY
-
+// array are always dynamic
+// also when you define an array using the constructor and pass a initial dimension
 const newArray = [];
 const newArrayIns = new Array(5);
 newArrayIns.fill('');
@@ -64,9 +81,12 @@ newArrayIns[5] = 'hello';
 
 let newNumberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-//for(let i=0; i < newArray.length; i++) {
-//console.log(newArray[i]);
-//}
+// loop with for loop
+function loopArrayWithForLoop() {
+  for (let i = 0; i < newArray.length; i++) {
+    console.log(newArray[i]);
+  }
+}
 
 function loopWithForEach() {
   for (let value in newArray) {
@@ -101,19 +121,13 @@ function filterWithIterator() {
   */
 }
 
-// true = 1 - false = 0
-//console.log(0 === true)
-// = assignment
-// == check (not strict)
-// === check strict
-
-//const objectIn = new Object();
+// OBJECT
 
 const object1 = { a: '1' };
 const object2 = { a: '1' };
 const object3 = object1;
 
-const deepObject = {
+const complexObject = {
   b: {
     c: {
       d: {},
@@ -121,26 +135,30 @@ const deepObject = {
   },
 };
 
-// spred operator
+// deep clone object
+// with spred operator
 const object4 = { ...object1 };
-//const object5 = cloneDeep(object1);
+// or using built-in structuredClone method to perform deep clone of the object
+const object5 = structuredClone(object1);
 
 console.log(typeof object1);
 console.log(typeof object2);
 console.log(typeof object3);
 
+// COMPARISON
+// = assignment
+// == check (not strict)
+// === check strict
+
 const op1 = '1';
 const op2 = 1;
-/*
+
 console.log(typeof op1);
 console.log(typeof op2);
-
 console.log(object1 == object2);
 console.log(object1 === object2);
-
 console.log(object1 == object3);
 console.log(object1 === object3);
-*/
 console.log(object1 === object4);
 
 object3.a = '3';
