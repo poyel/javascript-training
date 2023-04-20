@@ -136,10 +136,15 @@ const complexObject = {
 };
 
 // deep clone object
-// with spred operator
+// with spread operator
 const object4 = { ...object1 };
 // or using built-in structuredClone method to perform deep clone of the object
 const object5 = structuredClone(object1);
+
+// spread operator is not only used to clone object bau also to
+// but also to merge one or more array
+const newNumber2Array = [...newNumberArray, ...newArray, ...newArrayIns];
+console.log(newNumber2Array);
 
 console.log(typeof object1);
 console.log(typeof object2);
@@ -159,8 +164,10 @@ console.log(object1 == object2);
 console.log(object1 === object2);
 console.log(object1 == object3);
 console.log(object1 === object3);
+// object 4 is deep cloned by object 1
 console.log(object1 === object4);
 
+// change the value of a property
 object3.a = '3';
 
 console.log(object1.a);
@@ -169,34 +176,19 @@ console.log(op1 == op2);
 console.log(op1 === op2);
 
 console.log(newNumberArray);
-
-newNumberArray[0];
-newNumberArray[1];
-newNumberArray[2];
-
 object1.b = '3';
 console.log(object1);
 
-//loopWithForEach();
-//loopWithIterator();
-//console.log(mapArrayWithIterator());
-//console.log(newNumberArray);
-//console.log(filterWithIterator());
+// TO SEE THE RESULT OF THESE FUNCTION DEFINED ABOVE YOU CAN UNCOMMENT THE LINE
+// YOU ARE INTERESTED IN
 
-//console.log(newArrayIns);
-/*
-const newNumber2Array = [...newNumberArray, ...newArray, ...newArrayIns];
-console.log(newNumber2Array);
-
-function functionName(fn) {
-  const x = 1;
-  const y = 2;
-  fn(x, y);
-}
-
-const anonymusFunction = (x, y) => {
-  console.log('print from anonymus', x, y);
-};
-
-functionName(anonymusFunction);
-*/
+// function1()
+// function2()
+// functionConstUndefined()
+// functionConstCorrect()
+// functionNullUndefined()
+// loopArrayWithForLoop()
+// loopWithForEach()
+// loopWithIterator()
+// mapArrayWithIterator()
+// filterWithIterator()
